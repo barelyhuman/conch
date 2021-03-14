@@ -1,0 +1,46 @@
+{
+  "name": "@barelyreaper/conch",
+  "description": "micro library for batch running promises",
+  "version": "0.0.1",
+  "main": "dist/conch.js",
+  "unpkg": "dist/conch.umd.js",
+  "repository": "git@github.com:barelyhuman/conch",
+  "author": "Reaper Gelera <sidgroks@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/barelyhuman/conch/issues"
+  },
+  "homepage": "https://github.com/barelyhuman/conch",
+  "license": "MIT",
+  "files": [
+    "dist/*"
+  ],
+  "keywords": [
+    "batch promise",
+    "promises",
+    "concurrency",
+    "batch"
+  ],
+  "scripts": {
+    "build": "rimraf dist; bundt --minify",
+    "fix": "standard --fix || true",
+    "test": "node test.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "bundt": "^1.1.2",
+    "husky": "=4",
+    "lint-staged": ">=10",
+    "rimraf": "^3.0.2",
+    "standard": "^16.0.3"
+  },
+  "lint-staged": {
+    "*.{js,css}": "npm run fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
