@@ -8,7 +8,7 @@ micro library for batch running promises
 
 **Note: This is not a promise map alternative, promise map runs promises in parallel while keeping the given concurrency intact after every successful resolve, this runs it in sequential batches**
 
-For lighter powered systems and browsers it's sometimes impossible to run all the promises at once and it's easier to run it in batches one after the other, this helper basically does that. It chains the batches in a dependency chain and waits for the first batch to finish before executing the next.This can be controlled by the `limit` option, by providing the number of promises that a single batch will have.
+For low powered/memory systems and browsers it's sometimes impossible to run all the promises at once and it's easier to run it in batches one after the other, this helper basically does that. It chains the batches in a dependency chain and waits for the first batch to finish before executing the next.This can be controlled by the `limit` option, by providing the number of promises that a single batch will have.
 
 ## Install
 
@@ -21,7 +21,7 @@ yarn add @barelyreaper/conch
 ## Usage
 
 ```js
-const conc = require('@barelyreaper/conch');
+const conch = require('@barelyreaper/conch');
 
 const data = [
   {
@@ -44,7 +44,7 @@ function getData(item) {
 }
 
 // Will take 3 * 2500 , considering there's 3 items and only one can run at once (limit:1)
-conc(data, getData, { limit: 1 }).then((data) => {
+conch(data, getData, { limit: 1 }).then((data) => {
   console.log({ data });
 });
 ```
