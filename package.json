@@ -22,6 +22,7 @@
     "batch"
   ],
   "scripts": {
+    "prepare": "npm run build",
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "prebuild": "npm run clean",
