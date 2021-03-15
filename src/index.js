@@ -1,6 +1,6 @@
 'use strict'
 
-async function conc (iterable, mapFunc, options = { limit: Infinity }) {
+async function conch (iterable, mapFunc, options = { limit: Infinity }) {
   return new Promise((resolve, reject) => {
     let result = []
     const iterator = [...iterable]
@@ -15,7 +15,7 @@ async function conc (iterable, mapFunc, options = { limit: Infinity }) {
     // store the total number of chunks to be created for the provided limit
     let totalChunks = 1
 
-    if (options.limit >= 1 && options.limit != Infinity) {
+    if (options.limit >= 1 && options.limit !== Infinity) {
       totalChunks = Math.ceil(iterator.length / options.limit)
     }
 
@@ -41,4 +41,4 @@ async function conc (iterable, mapFunc, options = { limit: Infinity }) {
   })
 }
 
-module.exports = conc
+export default conch

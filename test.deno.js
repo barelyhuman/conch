@@ -1,4 +1,4 @@
-const conch = require('./src/index')
+import conch from './dist/index.esm.js'
 
 const data = [
   {
