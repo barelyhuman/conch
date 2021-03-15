@@ -25,7 +25,7 @@ yarn add @barelyreaper/conch
 ```js
 import conch from 'https://cdn.skypack.dev/@barelyreaper/conch';
 // or 
-import conch from "https://www.unpkg.com/@barelyreaper/conch@0.0.2/dist/index.esm.js
+import conch from "https://www.unpkg.com/@barelyreaper/conch/dist/index.esm.js
 ```
 
 ## Usage
