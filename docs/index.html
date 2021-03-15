@@ -1,0 +1,113 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+        rel="stylesheet"
+        href="styles.css"
+      />
+        <title>conch | Reaper</title>
+      </head>
+    
+      <body>
+        <header class="container-boundaries">
+          <div class="flex flex-center">
+            <div>
+              <h3>
+                Conch
+                <br />
+                <small class="fw-normal no-wrap">Micro library for batch running promises</small>
+              </h3>
+              <nav>
+                <a href="https://github.com/barelyhuman/conch"> Github </a>
+              </nav>
+            </div>
+            <div class="ml-auto">
+              <button id="darkModeToggle" class="no-border icon"></button>
+            </div>
+          </div>
+        </header>
+        <main class="container-boundaries"><p align="center">
+  <img src="logo.svg" />
+</p>
+
+<h1 id="conch">conch</h1>
+<p>micro library for batch running promises (Node/Browser/Deno)</p>
+<p><strong>Note: This is not a promise map alternative, promise map runs promises in parallel while keeping the given concurrency intact after every successful resolve, this runs it in sequential batches</strong></p>
+<p>For low powered/memory systems and browsers it&#39;s sometimes impossible to run all the promises at once and it&#39;s easier to run it in batches one after the other, this helper basically does that. It chains the batches in a dependency chain and waits for the first batch to finish before executing the next.This can be controlled by the <code>limit</code> option, by providing the number of promises that a single batch will have.</p>
+<h2 id="install">Install</h2>
+<h4 id="node">Node</h4>
+<pre><code class="language-sh">npm i @barelyreaper/conch
+# or
+yarn add @barelyreaper/conch
+</code></pre>
+<h4 id="deno">Deno</h4>
+<pre><code class="language-js">import conch from &#39;https://cdn.skypack.dev/@barelyreaper/conch&#39;;
+// or 
+import conch from &quot;https://www.unpkg.com/@barelyreaper/conch/dist/index.esm.js
+</code></pre>
+<h2 id="usage">Usage</h2>
+<pre><code class="language-js">const conch = require(&#39;@barelyreaper/conch&#39;);
+
+const data = [
+  {
+    item: 1,
+  },
+  {
+    item: 2,
+  },
+  {
+    item: 3,
+  },
+];
+
+function getData(item) {
+  return new Promise((resolve) =&gt; {
+    setTimeout(() =&gt; {
+      resolve(item);
+    }, 2500);
+  });
+}
+
+// Will take 3 * 2500 , considering there&#39;s 3 items and only one can run at once (limit:1)
+conch(data, getData, { limit: 1 }).then((data) =&gt; {
+  console.log({ data });
+});
+</code></pre>
+<h2 id="build">Build</h2>
+<pre><code class="language-sh">yarn # install devDeps
+yarn test # check the if the limit is being taken in consideration
+yarn build # build the package
+</code></pre>
+<h2 id="contribute">Contribute</h2>
+<p>You are free to fork,fix or create your own version</p>
+<ul>
+<li>Fork</li>
+<li>Pick and Issue, inform in the issue comments to avoid overlaps</li>
+<li>Code</li>
+<li>Raise a PR</li>
+<li>Merge / Feedback Cycle</li>
+</ul>
+<hr />
+
+<p><a href="https://www.freepik.com/vectors/icons">Logo vector created by lyolya_profitrolya - www.freepik.com</a></p>
+</main>
+        <footer>
+          <div class="container-boundaries text-center fw-bold">
+            2021 &copy;
+            <a target="blank" href="https://reaper.im">Reaper</a>
+          </div>
+        </footer>
+        <script
+          type="text/javascript"
+          src="https://unpkg.com/feather-icons@4.28.0/dist/feather.min.js"
+        ></script>
+        <script src="https://www.unpkg.com/@barelyreaper/themer/dist/index.umd.js"></script>
+        <script>
+          new Themer({ trigger: document.getElementById('darkModeToggle') });
+        </script>
+      </body>
+    </html>    
+        

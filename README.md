@@ -12,7 +12,7 @@ For low powered/memory systems and browsers it's sometimes impossible to run all
 
 ## Install
 
-- Node
+#### Node
 
 ```sh
 npm i @barelyreaper/conch
@@ -20,7 +20,7 @@ npm i @barelyreaper/conch
 yarn add @barelyreaper/conch
 ```
 
-- Deno
+#### Deno
 
 ```js
 import conch from 'https://cdn.skypack.dev/@barelyreaper/conch';

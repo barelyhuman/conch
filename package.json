@@ -29,7 +29,8 @@
     "prebuild": "npm run clean",
     "clean": "npx rimraf dist",
     "fix": "standard --fix || true",
-    "test": "node test.js"
+    "test": "node test.js",
+    "create:docs": "node create-docs.js"
   },
   "publishConfig": {
     "access": "public"
@@ -38,13 +39,15 @@
     "bundt": "^1.1.2",
     "husky": "=4",
     "lint-staged": ">=10",
+    "marked": "^2.0.1",
     "rimraf": "^3.0.2",
     "rollup": "^2.41.2",
     "rollup-plugin-cleanup": "^3.2.1",
     "standard": "^16.0.3"
   },
   "lint-staged": {
-    "*.{js,css}": "npm run fix"
+    "*.{js,css}": "npm run fix",
+    "*.{md}": "npm run create:docs"
   },
   "husky": {
     "hooks": {
