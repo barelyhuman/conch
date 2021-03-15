@@ -13,7 +13,8 @@
   "homepage": "https://github.com/barelyhuman/conch",
   "license": "MIT",
   "files": [
-    "dist/*"
+    "dist/*",
+    "public/logo.svg"
   ],
   "keywords": [
     "batch promise",
