@@ -4,7 +4,7 @@
 
 # conch
 
-micro library for batch running promises
+micro library for batch running promises (Node/Browser/Deno)
 
 **Note: This is not a promise map alternative, promise map runs promises in parallel while keeping the given concurrency intact after every successful resolve, this runs it in sequential batches**
 
@@ -12,10 +12,20 @@ For low powered/memory systems and browsers it's sometimes impossible to run all
 
 ## Install
 
+- Node
+
 ```sh
 npm i @barelyreaper/conch
 # or
 yarn add @barelyreaper/conch
+```
+
+- Deno
+
+```js
+import conch from 'https://cdn.skypack.dev/@barelyreaper/conch';
+// or 
+import conch from "https://www.unpkg.com/@barelyreaper/conch@0.0.2/dist/index.esm.js
 ```
 
 ## Usage
