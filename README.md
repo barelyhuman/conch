@@ -6,6 +6,15 @@
 
 micro library for batch running promises (Node/Browser/Deno)
 
+
+ <p>
+ <img alt="GitHub" src="https://img.shields.io/github/license/barelyhuman/conch?logoColor=000&colorA=000000&colorB=000000">
+<a href="https://bundlephobia.com/result?p=@barelyreaper/conch"><img src="https://img.shields.io/bundlephobia/minzip/@barelyreaper/conch?label=bundle%20size&amp;style=flat&amp;colorA=000000&amp;colorB=000000" alt="Build Size"></a>
+ <a href="https://www.npmjs.com/package/@barelyreaper/conch"><img src="https://img.shields.io/npm/v/@barelyreaper/conch?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Version"></a>
+ <a href="https://www.npmjs.com/package/@barelyreaper/conch"><img src="https://img.shields.io/npm/dt/@barelyreaper/conch.svg?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Downloads"></a>
+ </p>
+
+
 **Note: This is not a promise map alternative, promise map runs promises in parallel while keeping the given concurrency intact after every successful resolve, this runs it in sequential batches**
 
 For low powered/memory systems and browsers it's sometimes impossible to run all the promises at once and it's easier to run it in batches one after the other, this helper basically does that. It chains the batches in a dependency chain and waits for the first batch to finish before executing the next.This can be controlled by the `limit` option, by providing the number of promises that a single batch will have.
