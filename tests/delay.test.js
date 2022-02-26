@@ -1,4 +1,4 @@
-const conch = require("../src/index").default;
+const { default: conch } = require("../src/index.js");
 const { test } = require("uvu");
 const assert = require("uvu/assert");
 
