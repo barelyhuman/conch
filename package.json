@@ -1,57 +1,48 @@
 {
   "name": "@barelyreaper/conch",
-  "description": "micro library for batch running promises",
   "version": "0.0.4",
-  "main": "dist/index.cjs.js",
-  "unpkg": "dist/index.umd.js",
-  "module": "dist/index.esm.js",
-  "repository": "git@github.com:barelyhuman/conch",
-  "author": "Reaper Gelera <sidgroks@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/barelyhuman/conch/issues"
-  },
-  "homepage": "https://github.com/barelyhuman/conch",
-  "license": "MIT",
-  "files": [
-    "dist/*",
-    "public/logo.svg"
-  ],
+  "description": "micro library for batch running promises",
   "keywords": [
     "batch promise",
     "promises",
     "concurrency",
     "batch"
   ],
+  "homepage": "https://github.com/barelyhuman/conch",
+  "bugs": {
+    "url": "https://github.com/barelyhuman/conch/issues"
+  },
+  "repository": "git@github.com:barelyhuman/conch",
+  "license": "MIT",
+  "author": "Reaper<ahoy@barelyhuman.dev>",
+  "main": "dist/index.cjs.js",
+  "unpkg": "dist/index.umd.js",
+  "module": "dist/index.esm.js",
+  "files": [
+    "dist/*",
+    "public/logo.svg"
+  ],
   "scripts": {
+    "build": "tsup src/index.js --format cjs,esm --clean --dts --target=node12.22 --minify",
+    "dev": "yarn run build -- --watch",
+    "fix": "prettier --write .",
     "prepare": "npm run build",
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "prebuild": "npm run clean",
-    "clean": "npx rimraf dist",
-    "fix": "standard --fix || true",
-    "test": "node test.js",
-    "create:docs": "node create-docs.js"
+    "prepublishOnly": "rm -rf dist; npm run build; npm run size;",
+    "size": "sizesnap",
+    "test": "uvu -r esm tests"
+  },
+  "devDependencies": {
+    "@barelyhuman/prettier-config": "^0.1.0",
+    "esm": "^3.2.25",
+    "prettier": "^2.5.1",
+    "tsup": "^5.11.13",
+    "typescript": "^4.5.5",
+    "uvu": "^0.5.3"
+  },
+  "engines": {
+    "node": ">=12"
   },
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "bundt": "^1.1.2",
-    "husky": "=4",
-    "lint-staged": ">=10",
-    "marked": "^2.0.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.41.2",
-    "rollup-plugin-cleanup": "^3.2.1",
-    "standard": "^16.0.3"
-  },
-  "lint-staged": {
-    "*.{js,css}": "npm run fix",
-    "*.{md}": "npm run create:docs"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }
