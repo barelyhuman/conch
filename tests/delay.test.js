@@ -1,6 +1,6 @@
-const {conch} = require('../src/index.js')
-const {test} = require('uvu')
-const assert = require('uvu/assert')
+import {conch} from '../src/index.js'
+import {test} from 'uvu'
+import * as assert from 'uvu/assert'
 
 const data = [
 	{
