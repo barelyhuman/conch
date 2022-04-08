@@ -1,0 +1,6 @@
+pre-commit:
+  parallel: true
+  commands:
+    fix:
+      glob: '*.{js,ts,md,json}'
+      run: prettier --write {staged_files}; git add {staged_files}

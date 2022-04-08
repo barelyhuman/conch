@@ -41,6 +41,7 @@
 	},
 	"prettier": "@barelyhuman/prettier-config",
 	"devDependencies": {
+		"@arkweid/lefthook": "^0.7.7",
 		"@barelyhuman/prettier-config": "^0.1.0",
 		"bumpp": "^7.1.1",
 		"esm": "^3.2.25",
