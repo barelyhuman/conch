@@ -1,6 +1,6 @@
 {
 	"name": "@barelyreaper/conch",
-	"version": "0.0.4",
+	"version": "1.0.0",
 	"description": "micro library for batch running promises",
 	"keywords": [
 		"batch promise",
