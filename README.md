@@ -1,11 +1,6 @@
-<p align="center">
-  <img src="public/logo.svg" />
-</p>
-
 # conch
 
-micro library for batch running promises (Node/Browser/Deno)
-
+> micro library for async sequential batches (Node/Browser/Deno)
 
  <p>
  <img alt="GitHub" src="https://img.shields.io/github/license/barelyhuman/conch?logoColor=000&colorA=000000&colorB=000000">
@@ -13,7 +8,6 @@ micro library for batch running promises (Node/Browser/Deno)
  <a href="https://www.npmjs.com/package/@barelyreaper/conch"><img src="https://img.shields.io/npm/v/@barelyreaper/conch?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Version"></a>
  <a href="https://www.npmjs.com/package/@barelyreaper/conch"><img src="https://img.shields.io/npm/dt/@barelyreaper/conch.svg?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Downloads"></a>
  </p>
-
 
 **Note: This is not a promise map alternative, promise map runs promises in parallel while keeping the given concurrency intact after every successful resolve, this runs it in sequential batches**
 
@@ -32,40 +26,40 @@ yarn add @barelyreaper/conch
 #### Deno
 
 ```js
-import conch from 'https://cdn.skypack.dev/@barelyreaper/conch';
-// or 
-import conch from "https://www.unpkg.com/@barelyreaper/conch/dist/index.esm.js
+import {conch} from 'https://cdn.skypack.dev/@barelyreaper/conch';
+// or
+import {conch} from "https://www.unpkg.com/@barelyreaper/conch/dist/index.mjs
 ```
 
 ## Usage
 
 ```js
-const conch = require('@barelyreaper/conch');
+const {conch} = require('@barelyreaper/conch')
 
 const data = [
-  {
-    item: 1,
-  },
-  {
-    item: 2,
-  },
-  {
-    item: 3,
-  },
-];
+	{
+		item: 1,
+	},
+	{
+		item: 2,
+	},
+	{
+		item: 3,
+	},
+]
 
 function getData(item) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(item);
-    }, 2500);
-  });
+	return new Promise(resolve => {
+		setTimeout(() => {
+			resolve(item)
+		}, 2500)
+	})
 }
 
 // Will take 3 * 2500 , considering there's 3 items and only one can run at once (limit:1)
-conch(data, getData, { limit: 1 }).then((data) => {
-  console.log({ data });
-});
+conch(data, getData, {limit: 1}).then(data => {
+	console.log({data})
+})
 ```
 
 ## Build
@@ -85,7 +79,3 @@ You are free to fork,fix or create your own version
 - Code
 - Raise a PR
 - Merge / Feedback Cycle
-
-<hr />
-
-<a href="https://www.freepik.com/vectors/icons">Logo vector created by lyolya_profitrolya - www.freepik.com</a>

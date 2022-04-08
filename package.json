@@ -1,48 +1,64 @@
 {
-  "name": "@barelyreaper/conch",
-  "version": "0.0.4",
-  "description": "micro library for batch running promises",
-  "keywords": [
-    "batch promise",
-    "promises",
-    "concurrency",
-    "batch"
-  ],
-  "homepage": "https://github.com/barelyhuman/conch",
-  "bugs": {
-    "url": "https://github.com/barelyhuman/conch/issues"
-  },
-  "repository": "git@github.com:barelyhuman/conch",
-  "license": "MIT",
-  "author": "Reaper<ahoy@barelyhuman.dev>",
-  "main": "dist/index.cjs.js",
-  "unpkg": "dist/index.umd.js",
-  "module": "dist/index.esm.js",
-  "files": [
-    "dist/*",
-    "public/logo.svg"
-  ],
-  "scripts": {
-    "build": "tsup src/index.js --format cjs,esm --clean --dts --target=node12.22 --minify",
-    "dev": "yarn run build -- --watch",
-    "fix": "prettier --write .",
-    "prepare": "npm run build",
-    "prepublishOnly": "rm -rf dist; npm run build; npm run size;",
-    "size": "sizesnap",
-    "test": "uvu -r esm tests"
-  },
-  "devDependencies": {
-    "@barelyhuman/prettier-config": "^0.1.0",
-    "esm": "^3.2.25",
-    "prettier": "^2.5.1",
-    "tsup": "^5.11.13",
-    "typescript": "^4.5.5",
-    "uvu": "^0.5.3"
-  },
-  "engines": {
-    "node": ">=12"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@barelyreaper/conch",
+	"version": "0.0.4",
+	"description": "micro library for batch running promises",
+	"keywords": [
+		"batch promise",
+		"promises",
+		"concurrency",
+		"batch"
+	],
+	"homepage": "https://github.com/barelyhuman/conch",
+	"bugs": {
+		"url": "https://github.com/barelyhuman/conch/issues"
+	},
+	"repository": "git@github.com:barelyhuman/conch",
+	"license": "MIT",
+	"author": "Reaper<ahoy@barelyhuman.dev>",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"require": "./dist/index.js",
+			"import": "./dist/index.mjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsup src/index.js --format cjs,esm --clean --dts --target=node12 --minify",
+		"dev": "yarn run build -- --watch",
+		"fix": "prettier --write .",
+		"prepare": "npm run build",
+		"prepublishOnly": "rm -rf dist; npm run build; pnpm run size;",
+		"release": "bumpp --commit --push --tag && pnpm publish",
+		"size": "sizesnap",
+		"test": "uvu -r esm tests"
+	},
+	"prettier": "@barelyhuman/prettier-config",
+	"devDependencies": {
+		"@barelyhuman/prettier-config": "^0.1.0",
+		"bumpp": "^7.1.1",
+		"esm": "^3.2.25",
+		"prettier": "^2.5.1",
+		"sizesnap": "^0.1.1",
+		"tsup": "^5.11.13",
+		"typescript": "^4.5.5",
+		"uvu": "^0.5.3"
+	},
+	"engines": {
+		"node": ">=12"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"sizesnap": {
+		"files": [
+			"./dist/*"
+		]
+	}
 }
