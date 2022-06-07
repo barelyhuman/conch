@@ -1,7 +1,7 @@
 {
 	"name": "@barelyreaper/conch",
 	"packageManager": "pnpm@6.32.10",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "micro library for batch running promises",
 	"keywords": [
 		"batch promise",
