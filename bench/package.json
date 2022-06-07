@@ -1,6 +1,7 @@
 {
 	"private": true,
 	"type": "module",
+	"packageManager": "pnpm@6.32.10",
 	"scripts": {
 		"bench": "node index.js"
 	},

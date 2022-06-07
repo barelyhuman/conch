@@ -9,9 +9,7 @@
  <a href="https://www.npmjs.com/package/@barelyreaper/conch"><img src="https://img.shields.io/npm/dt/@barelyreaper/conch.svg?style=flat&amp;colorA=000000&amp;colorB=000000" alt="Downloads"></a>
  </p>
 
-**Note: This is not a promise map alternative, promise map runs promises in parallel while keeping the given concurrency intact after every successful resolve, this runs it in sequential batches**
-
-For low powered/memory systems and browsers it's sometimes impossible to run all the promises at once and it's easier to run it in batches one after the other, this helper basically does that. It chains the batches in a dependency chain and waits for the first batch to finish before executing the next.This can be controlled by the `limit` option, by providing the number of promises that a single batch will have.
+[The Why &rarr;](/docs/where-to-use.md)
 
 ## Install
 
@@ -70,12 +68,18 @@ yarn test # check the if the limit is being taken in consideration
 yarn build # build the package
 ```
 
-## Contribute
+## Benchmark
 
-You are free to fork,fix or create your own version
+conch has the lowest amount of allocation to usage ratio out of the 3
 
-- Fork
-- Pick and Issue, inform in the issue comments to avoid overlaps
-- Code
-- Raise a PR
-- Merge / Feedback Cycle
+```
+┌───────┬──────────────┬──────────────┐
+│ Name     │ Used               │ Allocated          │
+├───────┼──────────────┼──────────────┤
+│ conch    │ 4.68 MB            │ 4.95 MB            │
+├───────┼──────────────┼──────────────┤
+│ p-map    │ 4.21 MB            │ 5.47 MB            │
+├───────┼──────────────┼──────────────┤
+│ bluebird │ 5.65 MB            │ 7.32 MB            │
+└───────┴──────────────┴──────────────┘
+```
