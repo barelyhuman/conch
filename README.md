@@ -70,26 +70,4 @@ yarn build # build the package
 
 ## Benchmark
 
-conch has the lowest amount of allocation to usage ratio out of the 3
-
-```
-┌──────────┬────────────────────┬────────────────────┐
-│ Name     │ Used               │ Allocated          │
-├──────────┼────────────────────┼────────────────────┤
-│ conch    │ 4.22 MB            │ 6 MB               │
-├──────────┼────────────────────┼────────────────────┤
-│ p-map    │ 4.5 MB             │ 6.01 MB            │
-├──────────┼────────────────────┼────────────────────┤
-│ bluebird │ 5.99 MB            │ 7.31 MB            │
-└──────────┴────────────────────┴────────────────────┘
-
-```
-
-Performance Benchmark
-
-```
-  conch x 838,683 ops/sec ±2.79% (86 runs sampled)
-  pMap x 774,026 ops/sec ±7.36% (53 runs sampled)
-  bluebird x 3,510,299 ops/sec ±11.57% (56 runs sampled)
-Fastest is bluebird,conch
-```
+[BENCHMARKS](/BENCHMARKS)

@@ -17,9 +17,9 @@ jobs:
           npm run build
           cd bench
           npm i
-          node perf.js > BENCHMARKS
-          echo "\n\n" >> BENCHMARKS
-          node index.js >> BENCHMARKS
+          node perf.js > ../BENCHMARKS
+          echo "\n\n" >> ../BENCHMARKS
+          node index.js >> ../BENCHMARKS
 
       - name: Update resources
         uses: test-room-7/action-update-file@v1
