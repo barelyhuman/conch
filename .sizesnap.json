@@ -5,13 +5,13 @@
     "gzip": "186B"
   },
   "dist/index.js": {
-    "size": "737B",
-    "brotli": "394B",
-    "gzip": "439B"
+    "size": "739B",
+    "brotli": "395B",
+    "gzip": "441B"
   },
   "dist/index.mjs": {
-    "size": "268B",
-    "brotli": "179B",
-    "gzip": "203B"
+    "size": "270B",
+    "brotli": "180B",
+    "gzip": "205B"
   }
 }
