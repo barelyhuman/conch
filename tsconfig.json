@@ -1,12 +1,12 @@
 {
-	"compilerOptions": {
-		"emitDeclarationOnly": true,
-		"declaration": true,
-		"outDir": "dist",
-		"allowJs": true,
-		"checkJs": true,
-		"downlevelIteration": true,
-		"esModuleInterop": true,
-		"lib": ["es2015", "dom"]
-	}
+  "compilerOptions": {
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "outDir": "dist",
+    "allowJs": true,
+    "checkJs": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "lib": ["es2015", "dom"]
+  }
 }

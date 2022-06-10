@@ -1,17 +1,17 @@
 {
-	"dist/index.d.ts": {
-		"size": "250B",
-		"brotli": "149B",
-		"gzip": "182B"
-	},
-	"dist/index.js": {
-		"size": "868B",
-		"brotli": "476B",
-		"gzip": "538B"
-	},
-	"dist/index.mjs": {
-		"size": "399B",
-		"brotli": "275B",
-		"gzip": "305B"
-	}
+  "dist/index.d.ts": {
+    "size": "258B",
+    "brotli": "150B",
+    "gzip": "186B"
+  },
+  "dist/index.js": {
+    "size": "737B",
+    "brotli": "394B",
+    "gzip": "439B"
+  },
+  "dist/index.mjs": {
+    "size": "268B",
+    "brotli": "179B",
+    "gzip": "203B"
+  }
 }

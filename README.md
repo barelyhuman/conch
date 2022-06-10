@@ -32,31 +32,31 @@ import {conch} from "https://www.unpkg.com/@barelyreaper/conch/dist/index.mjs
 ## Usage
 
 ```js
-const {conch} = require('@barelyreaper/conch')
+const { conch } = require('@barelyreaper/conch')
 
 const data = [
-	{
-		item: 1,
-	},
-	{
-		item: 2,
-	},
-	{
-		item: 3,
-	},
+  {
+    item: 1,
+  },
+  {
+    item: 2,
+  },
+  {
+    item: 3,
+  },
 ]
 
 function getData(item) {
-	return new Promise(resolve => {
-		setTimeout(() => {
-			resolve(item)
-		}, 2500)
-	})
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(item)
+    }, 2500)
+  })
 }
 
 // Will take 3 * 2500 , considering there's 3 items and only one can run at once (limit:1)
-conch(data, getData, {limit: 1}).then(data => {
-	console.log({data})
+conch(data, getData, { limit: 1 }).then(data => {
+  console.log({ data })
 })
 ```
 
@@ -76,10 +76,22 @@ conch has the lowest amount of allocation to usage ratio out of the 3
 ┌──────────┬────────────────────┬────────────────────┐
 │ Name     │ Used               │ Allocated          │
 ├──────────┼────────────────────┼────────────────────┤
-│ conch    │ 4.69 MB            │ 4.95 MB            │
+│ conch    │ 4.22 MB            │ 6 MB               │
 ├──────────┼────────────────────┼────────────────────┤
-│ p-map    │ 4.6 MB             │ 6.01 MB            │
+│ p-map    │ 4.5 MB             │ 6.01 MB            │
 ├──────────┼────────────────────┼────────────────────┤
 │ bluebird │ 5.99 MB            │ 7.31 MB            │
 └──────────┴────────────────────┴────────────────────┘
+
 ```
+
+Performance Benchmark
+
+```
+conch x 813,294 ops/sec ±3.00% (81 runs sampled)
+pMap x 758,312 ops/sec ±7.12% (64 runs sampled)
+
+conch is faster
+```
+
+> **Note**: bluebird.map is faster than both but I kept getting `Reached heap limit Allocation failed` due to memory constraints
