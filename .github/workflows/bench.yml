@@ -18,7 +18,6 @@ jobs:
           cd bench
           npm i
           node perf.js > ../BENCHMARKS
-          echo "\n\n" >> ../BENCHMARKS
           node index.js >> ../BENCHMARKS
 
       - name: Update resources
