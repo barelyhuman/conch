@@ -20,11 +20,11 @@ suite
   .add('p-map', function () {
     pMap(data, mapper, { concurrency: data.length / 2 }).then(() => {})
   })
-  // .add('promisu', function () {
-  //   promisu
-  //     .PromisuMap(data, mapper, { concurrency: data.length / 2 })
-  //     .then(() => {})
-  // })
+  .add('promisu', function () {
+    promisu
+      .PromisuMap(data, mapper, { concurrency: data.length / 2 })
+      .then(() => {})
+  })
   // .add('bluebird', function () {
   //   bluebird.map(data, mapper, { concurrency: data.length / 2 })
   // })
