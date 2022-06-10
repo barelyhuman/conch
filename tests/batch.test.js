@@ -3,17 +3,16 @@ import * as assert from 'uvu/assert'
 
 const batchingLogic = (items = [], limit = 2) => {
   const batches = []
+  let offset = 0
 
-  const batcher = (_till = 0) => {
-    const nextTill = _till + 1 + (limit - 1)
+  const batcher = () => {
+    while (offset < items.length) {
+      const batch = items.slice(offset * limit, (offset + 1) * limit)
+      if (batch.length) batches.push(batch)
+      offset = offset + 1
+    }
 
-    const batch = items.slice(_till, nextTill)
-
-    if (batch.length === 0) return batches
-
-    batches.push(batch)
-
-    return batcher(nextTill)
+    return batches
   }
 
   return batcher()

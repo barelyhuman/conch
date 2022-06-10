@@ -17,30 +17,30 @@
  * @param {Options} options configuration options for conch
  * @returns {Promise<unknown>}
  */
-export const conch = async (
-  iterable,
-  mapFunc,
-  options = { limit: Infinity }
-) => {
+export const conch = (iterable, mapFunc, options = { limit: Infinity }) => {
   let resolved = []
-  const limit = options.limit
-  const maxTill = iterable.length
+  let limit = options.limit
+  let offset = 0
+  let chain = Promise.resolve()
 
-  const resolver = async (_till = 0) => {
-    if (_till >= maxTill) return resolved
+  if (!(iterable instanceof Array))
+    throw new Error('[conch] the input needs to be an array of items')
 
-    let nextTill = maxTill
-    if (!(limit === 0 || limit === Infinity)) nextTill = _till + 1 + (limit - 1)
+  if (isNaN(options.limit))
+    throw new Error('[conch] limit needs to be a number')
 
-    const batch = iterable.slice(_till, nextTill)
+  if (options.limit === Infinity || options.limit === 0) limit = iterable.length
 
-    if (batch.length === 0) return resolved
-
-    const data = await Promise.all(batch.map(mapFunc))
-    resolved = resolved.concat(data)
-
-    return resolver(nextTill)
+  while (offset < iterable.length) {
+    const batch = iterable.slice(offset * limit, (offset + 1) * limit)
+    if (batch.length === 0) break
+    offset = offset + 1
+    chain = chain
+      .then(() => Promise.all(batch.map(mapFunc)))
+      .then(d => {
+        resolved = resolved.concat(d)
+      })
   }
 
-  return resolver()
+  return chain.then(() => resolved)
 }
