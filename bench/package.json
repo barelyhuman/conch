@@ -1,15 +1,15 @@
 {
-	"private": true,
-	"type": "module",
-	"packageManager": "pnpm@6.32.10",
-	"scripts": {
-		"bench": "node index.js"
-	},
-	"devDependencies": {
-		"benchmark": "^2.1.4",
-		"bluebird": "^3.7.2",
-		"cli-table": "^0.3.11",
-		"p-map": "^5.4.0",
-		"pretty-bytes": "^6.0.0"
-	}
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@6.32.10",
+  "scripts": {
+    "bench": "node index.js"
+  },
+  "devDependencies": {
+    "benchmark": "^2.1.4",
+    "bluebird": "^3.7.2",
+    "cli-table": "^0.3.11",
+    "p-map": "^5.4.0",
+    "pretty-bytes": "^6.0.0"
+  }
 }

@@ -11,46 +11,36 @@
  * @returns {any}
  */
 
-// minifiable alias
-const p = Promise
-
 /**
- * @param {Array<any>} iterable a collection or array of items to be mapped over
+ * @param {Array<unknown>} iterable a collection or array of items to be mapped over
  * @param {MapFunction} mapFunc the async function that is to be run per item of the collection
  * @param {Options} options configuration options for conch
- * @returns {Promise<any>}
+ * @returns {Promise<unknown>}
  */
-export const conch = (iterable, mapFunc, options = {limit: Infinity}) => {
-	return new p((resolve, reject) => {
-		let result = []
-		const limit = options.limit
+export const conch = async (
+  iterable,
+  mapFunc,
+  options = { limit: Infinity }
+) => {
+  let resolved = []
+  const l = options.limit
+  const maxTill = iterable.length
 
-		// Check for limit to be a valid number and not less that 1
-		if (isNaN(limit) || limit < 1) {
-			throw new Error(
-				'Invalid number returned for limit, make sure its a number and is greater than 1',
-			)
-		}
+  const resolver = async (_till = 0) => {
+    if (_till >= maxTill) return resolved
 
-		// store the total number of chunks to be created for the provided limit
-		let totalChunks = 1
+    let nextTill = maxTill
+    if (!(l === 0 || l === Infinity)) nextTill = (_till + 1) * l
 
-		if (limit >= 1 && limit !== Infinity) {
-			totalChunks = Math.ceil(iterable.length / limit)
-		}
+    const batch = iterable.slice(_till, nextTill)
 
-		const chain = p.resolve()
+    if (batch.length === 0) return resolved
 
-		for (let i = 0; i < totalChunks; i++) {
-			const batch = iterable.slice(i * limit, (i + 1) * limit)
-			chain
-				.then(() => p.all(batch.map(mapFunc)))
-				.then(data => {
-					result.concat(data)
-				})
-				.catch(reject)
-		}
+    const data = await Promise.all(batch.map(mapFunc))
+    resolved = resolved.concat(data)
 
-		chain.then(_ => resolve(result))
-	})
+    return resolver(nextTill)
+  }
+
+  return resolver()
 }

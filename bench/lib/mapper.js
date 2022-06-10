@@ -1,7 +1,7 @@
 export function mapperFunc(item) {
-	return new Promise((resolve, reject) => {
-		setTimeout(() => {
-			resolve(item)
-		}, 2500)
-	})
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(item)
+    }, 2500)
+  })
 }
