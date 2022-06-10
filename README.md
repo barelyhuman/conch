@@ -88,10 +88,8 @@ conch has the lowest amount of allocation to usage ratio out of the 3
 Performance Benchmark
 
 ```
-conch x 813,294 ops/sec ±3.00% (81 runs sampled)
-pMap x 758,312 ops/sec ±7.12% (64 runs sampled)
-
-conch is faster
+  conch x 838,683 ops/sec ±2.79% (86 runs sampled)
+  pMap x 774,026 ops/sec ±7.36% (53 runs sampled)
+  bluebird x 3,510,299 ops/sec ±11.57% (56 runs sampled)
+Fastest is bluebird,conch
 ```
-
-> **Note**: bluebird.map is faster than both but I kept getting `Reached heap limit Allocation failed` due to memory constraints

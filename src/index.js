@@ -23,14 +23,14 @@ export const conch = async (
   options = { limit: Infinity }
 ) => {
   let resolved = []
-  const l = options.limit
+  const limit = options.limit
   const maxTill = iterable.length
 
   const resolver = async (_till = 0) => {
     if (_till >= maxTill) return resolved
 
     let nextTill = maxTill
-    if (!(l === 0 || l === Infinity)) nextTill = (_till + 1) * l
+    if (!(limit === 0 || limit === Infinity)) nextTill = _till + 1 + (limit - 1)
 
     const batch = iterable.slice(_till, nextTill)
 
