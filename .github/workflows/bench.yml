@@ -5,17 +5,25 @@ on:
     branches: [dev]
 
 jobs:
-  build:
+  bench:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm i
       - run: |
-        npm run build
-        cd bench
-        npm i
-        node perf.js 
-        node index.js
+          npm i
+          npm run build
+          cd bench
+          npm i
+          node perf.js > BENCHMARKS
+          echo "\n\n" >> BENCHMARKS
+          node index.js >> BENCHMARKS
+
+      - name: Update resources
+        uses: test-room-7/action-update-file@v1
+        with:
+          file-path: 'BENCHMARKS'
+          commit-msg: Update benchmarks
+          github-token: ${{ secrets.GITHUB_TOKEN }}
