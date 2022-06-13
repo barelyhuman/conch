@@ -27,9 +27,13 @@ yarn add @barelyreaper/conch
 import {conch} from 'https://cdn.skypack.dev/@barelyreaper/conch';
 // or
 import {conch} from "https://www.unpkg.com/@barelyreaper/conch/dist/index.mjs
+// or 
+import {conch} from "https://esm.sh/@barelyreaper/conch"
 ```
 
 ## Usage
+
+**Node**
 
 ```js
 const { conch } = require('@barelyreaper/conch')
@@ -58,6 +62,28 @@ function getData(item) {
 conch(data, getData, { limit: 1 }).then(data => {
   console.log({ data })
 })
+```
+
+**Deno** 
+
+```js
+import { conch } from "https://esm.sh/@barelyreaper/conch@1.2.0";
+
+const mapper = (item) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(item * 2);
+    }, 3000);
+  });
+};
+
+const items = [1, 2, 3];
+
+const result = await conch(items, mapper, {
+  limit: Math.ceil(items.length / 2),
+});
+
+console.log(result); //=>[2,4,6]
 ```
 
 ## Build
