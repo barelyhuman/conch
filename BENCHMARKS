@@ -1,6 +1,6 @@
-  conch x 256,211 ops/sec ±4.87% (60 runs sampled)
-  p-map x 170,285 ops/sec ±9.83% (39 runs sampled)
-  promisu x 31,991 ops/sec ±2.85% (74 runs sampled)
+  conch x 278,680 ops/sec ±4.17% (61 runs sampled)
+  p-map x 195,398 ops/sec ±12.21% (33 runs sampled)
+  promisu x 35,216 ops/sec ±4.99% (85 runs sampled)
 Fastest :conch
 Slowest :promisu
 ┌──────────┬────────────────────┬────────────────────┐
@@ -8,7 +8,7 @@ Slowest :promisu
 ├──────────┼────────────────────┼────────────────────┤
 │ conch    │ 4.55 MB            │ 6.48 MB            │
 ├──────────┼────────────────────┼────────────────────┤
-│ p-map    │ 4.68 MB            │ 5.69 MB            │
+│ p-map    │ 4.67 MB            │ 5.69 MB            │
 ├──────────┼────────────────────┼────────────────────┤
-│ bluebird │ 5.87 MB            │ 7.26 MB            │
+│ bluebird │ 5.84 MB            │ 7.26 MB            │
 └──────────┴────────────────────┴────────────────────┘
